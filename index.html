@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Перша Печать — Тіні Архівів</title>
+
+  <style>
+    @font-face {
+      font-family: 'WexyFont';
+      src: url('Wexyfontps.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      background: #0a0a0a;
+      color: #e6e6e6;
+      font-family: 'WexyFont', serif;
+      text-align: center;
+      padding: 10vh 5vw;
+      background-image: radial-gradient(circle at center, #111 0%, #000 100%);
+      animation: fadein 2s ease-in;
+      overflow-y: auto;
+    }
+
+    h1 {
+      font-size: 4em;
+      color: #4e3c6e;
+      text-shadow: 0 0 25px #4e3c6e, 0 0 50px #2b2040;
+      margin-bottom: 0.8em;
+    }
+
+    p {
+      width: 80%;
+      margin: 20px auto;
+      font-size: 1.8em;
+      line-height: 1.8;
+      color: #e0d9f0;
+      text-shadow: 0 0 12px rgba(78, 60, 110, 0.8);
+    }
+
+    .riddle {
+      margin-top: 50px;
+      font-size: 1.7em;
+      color: #cfc6e4;
+      text-shadow: 0 0 10px #4e3c6e;
+      white-space: pre-line;
+    }
+
+    input {
+      margin-top: 40px;
+      padding: 15px;
+      font-size: 1.5em;
+      width: 60%;
+      border: 2px solid #4e3c6e;
+      border-radius: 8px;
+      background: #1a1a1a;
+      color: #e0d9f0;
+      text-align: center;
+      font-family: 'WexyFont';
+      text-shadow: 0 0 10px #4e3c6e;
+    }
+
+    button {
+      display: block;
+      margin: 40px auto;
+      padding: 15px 40px;
+      font-size: 1.5em;
+      border: 2px solid #4e3c6e;
+      background: transparent;
+      color: #4e3c6e;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-family: 'WexyFont';
+      text-shadow: 0 0 10px #4e3c6e;
+    }
+
+    button:hover {
+      background-color: #4e3c6e;
+      color: #fff;
+      box-shadow: 0 0 25px #4e3c6e;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 1.5em;
+      color: #cfc6e4;
+      text-shadow: 0 0 10px #4e3c6e;
+    }
+
+    a {
+      color: #4e3c6e;
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: 0 0 15px #4e3c6e;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Перша Печать</h1>
+
+  <p>Архів — це не місце. Це живий організм, що пам’ятає кожну руку, яка його торкнулась.<br>
+  Щоб знайти шлях, мусиш відповісти на запитання, що зберігає перший печатник.<br>
+  Його загадки не про знання — вони про те, що ти бачиш, коли дивишся у себе.</p>
+
+  <div class="riddle">
+    <p><b>1.</b> Я пожираю все: звірів, птахів, рослини і багатолітні дерева,<br>
+    гризу залізо, перемелюю каміння в труху,<br>
+    вбиваю королів, руйную міста, збиваю високі гори. Хто я?</p>
+
+    <p><b>2.</b> Мене не видно, але тримаю сильніше сталі.<br>
+    Мої кайдани кують не ковалi, а думки.<br>
+    Не залишаю слідів на тілі — а лише тягар у пам’яті.<br>
+    Росту в тиші, живу у спогадах, і шепочу вночі: “Пам’ятаєш?”</p>
+
+    <p><b>3.</b> Я є у храмі, у битві, у ночі і там, де світло боїться світити.<br>
+    Я не прошу віри, бо вже володію нею.<br>
+    Моє обличчя в тіні, та я змушую коліна тремтіти. Хто я?</p>
+  </div>
+
+  <p><i>Формула для відкриття наступного епізоду:</i><br>
+  <b>Відповідь(час, провина, страх)</b></p>
+
+  <input type="text" id="answer" placeholder="Введи формулу..." />
+  <button onclick="checkAnswer()">Перевірити</button>
+
+  <div id="result"></div>
+
+  <script>
+    function checkAnswer() {
+      const input = document.getElementById('answer').value.trim().toLowerCase();
+      const correct = "відповідь(час,провина,страх)";
+      const correct2 = "відповідь(час, провина, страх)";
+
+      if (input === correct || input === correct2) {
+        document.getElementById('result').innerHTML = 
+          `🔮 Формула прийнята. <br> <a href='https://твій_лінк_на_другий_квест'>Перейти до наступного випробування</a>`;
+      } else {
+        document.getElementById('result').innerText = "⛓️ Архів мовчить. Спробуй знову...";
+      }
+    }
+  </script>
+</body>
+</html>
